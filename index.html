@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Archana ❤️ My Forever</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+body {
+    margin: 0;
+    font-family: 'Segoe UI', sans-serif;
+    background: radial-gradient(circle, #ff758c, #ff7eb3);
+    color: white;
+    text-align: center;
+}
+
+.container {
+    padding: 30px 20px 100px;
+}
+
+.heart {
+    font-size: 75px;
+    animation: beat 1s infinite;
+}
+
+@keyframes beat {
+    0%,100% { transform: scale(1); }
+    50% { transform: scale(1.2); }
+}
+
+h1 {
+    font-size: 2.6rem;
+    margin: 10px 0 0;
+}
+
+h2 {
+    font-weight: 300;
+    margin-bottom: 25px;
+}
+
+.slider {
+    width: 90%;
+    max-width: 360px;
+    margin: 25px auto;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 12px 30px rgba(0,0,0,0.35);
+}
+
+.slider img {
+    width: 100%;
+    display: none;
+}
+
+.slider img.active {
+    display: block;
+    animation: fade 1.5s;
+}
+
+@keyframes fade {
+    from { opacity: 0; transform: scale(1.08); }
+    to { opacity: 1; transform: scale(1); }
+}
+
+.message {
+    max-width: 700px;
+    margin: auto;
+    font-size: 1.15rem;
+    line-height: 1.8;
+}
+
+.counter {
+    margin: 30px auto;
+    font-size: 1.2rem;
+    background: rgba(255,255,255,0.15);
+    padding: 15px;
+    border-radius: 15px;
+    width: fit-content;
+}
+
+button {
+    background: white;
+    color: #ff4d6d;
+    border: none;
+    padding: 14px 32px;
+    border-radius: 30px;
+    font-size: 1rem;
+    cursor: pointer;
+    margin-top: 20px;
+}
+
+footer {
+    position: fixed;
+    bottom: 10px;
+    width: 100%;
+    font-size: 0.9rem;
+    opacity: 0.9;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <div class="heart">❤️</div>
+    <h1>Archana Singh</h1>
+    <h2>You Are My Always 💖</h2>
+
+    <div class="slider">
+        <img src="photo1.jpg" class="active">
+        <img src="photo2.jpg">
+        <img src="photo3.jpg">
+    </div>
+
+    <div class="message">
+        Tum sirf meri zindagi ka hissa nahi ho Archana,<br>
+        tum meri har dua ka jawab ho.<br><br>
+
+        Tumhari muskurahat meri kamzori hai,<br>
+        aur tumhara saath meri taaqat.<br><br>
+
+        Iss Valentine’s Day par bas itna kehna hai —<br>
+        main tumse aaj bhi utna hi pyaar karta hoon,<br>
+        jitna pehli baar kiya tha… aur usse kahin zyada. ❤️
+        <br><br>
+        — Forever Yours
+    </div>
+
+    <div class="counter" id="counter"></div>
+
+    <button onclick="playMusic()">Play Our Song 🎶</button>
+
+    <audio id="song" loop>
+        <source src="ve-haaniya.mp3" type="audio/mpeg">
+    </audio>
+
+</div>
+
+<footer>
+    Ankit ❤️ Archana | Forever
+</footer>
+
+<script>
+let slides = document.querySelectorAll(".slider img");
+let index = 0;
+
+setInterval(() => {
+    slides[index].classList.remove("active");
+    index = (index + 1) % slides.length;
+    slides[index].classList.add("active");
+}, 3000);
+
+// 👉 CHANGE THIS DATE
+const startDate = new Date("2025-04-30");
+
+function updateCounter() {
+    const now = new Date();
+    const diff = now - startDate;
+
+    const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+    const minutes = Math.floor((diff / (1000 * 60)) % 60);
+
+    document.getElementById("counter").innerHTML =
+        `Together for 💕<br><b>${days}</b> days <b>${hours}</b> hrs <b>${minutes}</b> mins`;
+}
+
+setInterval(updateCounter, 60000);
+updateCounter();
+
+function playMusic() {
+    document.getElementById("song").play();
+}
+</script>
+
+</body>
+</html>
